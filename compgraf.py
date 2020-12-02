@@ -3,20 +3,48 @@ import string
 
 
 usuarios = []
-arquivo = open("ids.txt","a")
+
 
 
 
 def cadastro():
+      listuser = open("user.txt","w")
+      listsenha = open("senha.txt", "w")
+
       user = input("Escolha seu ID: ")
       senha = input("Digite a sua senha: ")
       
-      cadastro = ["\n", user,"\n", senha, "\n", "_"*50]
-      arquivo.writelines(cadastro)
+      #cadastro = ["\n", user,"\n", senha, "\n", "_"*50]
+      listuser.writelines(user)
+      listsenha.writelines(senha)
+
+      listuser.close()
+      listsenha.close()
 
 def login():
-    arquivo.read()
-    print (arquivo)
+      listuser = open("user.txt","r")
+      listuser.read()
+      loginid = input("Login: ")
+      linhauser = listuser.readlines()
+      if linhauser == loginid:
+            listuser.close()
+            listsenha = open("senha.txt", "r")
+            listsenha.read()
+            loginsenha = input("Senha: ")
+            linhasenha = listsenha.readlines()
+            if linhasenha == loginsenha:
+                  print("Logado!")
+                  listsenha.close()
+            else:
+                  print("Senha incorreta!")
+                  listsenha.close()
+      elif linhauser != loginid:
+            print("Login não existe")
+            listuser.close()
+
+
+    
+    
 
 
 print("Seja bem a Autenticação de Três Fatores (ATF)")
@@ -28,6 +56,8 @@ if escolha == 2:
       cadastro()
 elif escolha == 1:
       login()
+
+
 
 
 '''
