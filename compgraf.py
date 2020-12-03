@@ -23,15 +23,13 @@ def cadastro():
 
 def login():
       listuser = open("user.txt","r")
-      listuser.read()
       loginid = input("Login: ")
-      linhauser = listuser.readlines()
+      linhauser = listuser.read()
       if linhauser == loginid:
             listuser.close()
             listsenha = open("senha.txt", "r")
-            listsenha.read()
             loginsenha = input("Senha: ")
-            linhasenha = listsenha.readlines()
+            linhasenha = listsenha.read()
             if linhasenha == loginsenha:
                   print("Logado!")
                   listsenha.close()
